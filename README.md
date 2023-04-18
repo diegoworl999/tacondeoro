@@ -1,2 +1,1 @@
-# tacondeoro
-Trabajo de programación
+# Proyecto de programación

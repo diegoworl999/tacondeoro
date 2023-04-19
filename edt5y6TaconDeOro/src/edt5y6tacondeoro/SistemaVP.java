@@ -88,60 +88,77 @@ public class SistemaVP extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jMenu1 = new javax.swing.JMenu();
         jPanel1 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        mn_registrar = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
+        mn_iniciar = new javax.swing.JMenuItem();
+        mn_tupedido = new javax.swing.JMenu();
+        mn_hacerpedido = new javax.swing.JMenuItem();
+        mn_estado = new javax.swing.JMenuItem();
+        mn_cancelar = new javax.swing.JMenuItem();
+        mn_cumplimentar = new javax.swing.JMenu();
+        mn_cumplimentarpedido = new javax.swing.JMenuItem();
+
+        jMenu1.setText("jMenu1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        jButton1.setText("Hacer Pedido (Socio)");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-
-        jButton2.setText("Cumplimentar Pedido (responsable almacén)");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
-
-        jLabel1.setText("Nombre de usuario:");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(83, 83, 83)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 83, Short.MAX_VALUE)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 353, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(41, 41, 41))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(177, 177, 177)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGap(0, 749, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 126, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
-                .addGap(160, 160, 160))
+            .addGap(0, 305, Short.MAX_VALUE)
         );
+
+        jMenuBar1.setPreferredSize(new java.awt.Dimension(382, 50));
+
+        mn_registrar.setText("REGISTRATE");
+
+        jMenuItem1.setText("Registrar");
+        mn_registrar.add(jMenuItem1);
+
+        mn_iniciar.setText("Iniciar Sesión");
+        mn_registrar.add(mn_iniciar);
+
+        jMenuBar1.add(mn_registrar);
+
+        mn_tupedido.setText("HAZ TU PEDIDO");
+
+        mn_hacerpedido.setText("Haz tu pedido");
+        mn_hacerpedido.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mn_hacerpedidoActionPerformed(evt);
+            }
+        });
+        mn_tupedido.add(mn_hacerpedido);
+
+        mn_estado.setText("Ver estado del pedido");
+        mn_tupedido.add(mn_estado);
+
+        mn_cancelar.setText("Cancelar pedido");
+        mn_tupedido.add(mn_cancelar);
+
+        jMenuBar1.add(mn_tupedido);
+
+        mn_cumplimentar.setText("CUMPLIMENTAR PEDIDO");
+
+        mn_cumplimentarpedido.setText("Cumplimentar");
+        mn_cumplimentarpedido.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mn_cumplimentarpedidoActionPerformed(evt);
+            }
+        });
+        mn_cumplimentar.add(mn_cumplimentarpedido);
+
+        jMenuBar1.add(mn_cumplimentar);
+
+        setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -157,17 +174,17 @@ public class SistemaVP extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void mn_hacerpedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mn_hacerpedidoActionPerformed
         // TODO add your handling code here:
         HacerPedido pedido=new HacerPedido(this,true);
         pedido.setVisible(true);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_mn_hacerpedidoActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void mn_cumplimentarpedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mn_cumplimentarpedidoActionPerformed
         // TODO add your handling code here:
         DCumplimentarPedido cumplimentar=new DCumplimentarPedido(this,true);
         cumplimentar.setVisible(true);
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_mn_cumplimentarpedidoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -205,10 +222,17 @@ public class SistemaVP extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JMenuItem mn_cancelar;
+    private javax.swing.JMenu mn_cumplimentar;
+    private javax.swing.JMenuItem mn_cumplimentarpedido;
+    private javax.swing.JMenuItem mn_estado;
+    private javax.swing.JMenuItem mn_hacerpedido;
+    private javax.swing.JMenuItem mn_iniciar;
+    private javax.swing.JMenu mn_registrar;
+    private javax.swing.JMenu mn_tupedido;
     // End of variables declaration//GEN-END:variables
 }

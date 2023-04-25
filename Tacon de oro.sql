@@ -6,7 +6,7 @@ use tacondeoro;
 
 drop table if exists socio;
 create table socio
-(id int not null unique,
+(id int not null unique auto_increment,
 nombre varchar(50),
 correoElectronico varchar(100),
 direccion varchar(50),
@@ -30,7 +30,7 @@ primary key (nombre)
 
 drop table if exists ruta;
 create table ruta
-(id int not null unique,
+(id int not null unique auto_increment,
 areas varchar (100),
 diareparto varchar(50),
 empresaT varchar(100),
@@ -40,7 +40,7 @@ foreign key (empresaT) references empresatransporte (nombre)
 
 drop table if exists pedidos;
 create table pedidos
-(codigo int not null unique,
+(codigo int not null unique auto_increment,
 fecha varchar(50),
 idRuta int,
 total decimal,

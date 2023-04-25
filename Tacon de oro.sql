@@ -8,12 +8,10 @@ drop table if exists socio;
 create table socio
 (id int not null unique,
 nombre varchar(50),
-correoe varchar(100),
+correoElectronico varchar(100),
 direccion varchar(50),
 poblacion varchar(100),
-numerotar varchar(50),
-primary key (nombre),
-foreign key (direccion) references ruta (areas));
+primary key (id));
 
 drop table if exists tarjetabancaria;
 create table tarjetabancaria
@@ -22,35 +20,37 @@ idSocio int,
 primary key (numero)
 foreign key (idSocio) references socio (id));
 
-drop table if exists pedidos;
-create table pedidos
-(codigo int not null unique,
-fecha varchar(50),
-areaped varchar (100),
-total decimal,
-idsocio int,
-primary key (codigo),
-foreign key(idsocio) references socio (id)
-);
-
-drop table if exists ruta;
-create table ruta
-(areas varchar (100) not null unique,
-diareparto varchar(50),
-primary key (areas)
-forign key (areas) references pedidos (areaped)
-);
-
 drop table if exists empresatransporte;
 create table empresatransporte
 (nombre varchar(100) not null unique,
 CIF varchar(100),
-domicilio varchar(100),
+domicilioFiscal varchar(100),
 primary key (nombre),
-foreign key (domicilio) references ruta (areas)
 );
 
-drop table if exists articulos;
+drop table if exists ruta;
+create table ruta
+(id int not null unique,
+areas varchar (100),
+diareparto varchar(50),
+empresaT varchar(100),
+primary key (id),
+foreign key (empresaT) references empresatransporte (nombre)
+);
+
+drop table if exists pedidos;
+create table pedidos
+(codigo int not null unique,
+fecha varchar(50),
+idRuta int,
+total decimal,
+idsocio int,
+primary key (codigo),
+foreign key(idsocio) references socio (id),
+foreign key (idRuta) references ruta (id)
+);
+
+drop table if exists articulo;
 create table articulo
 (id int not null unique,
 nombre varchar (50),
@@ -74,8 +74,8 @@ create table lineaspedido
 (codPedido int not null,
 idArticulo int not null,
 cantidad int,
-primary key (codpe, ida),
-unique (codpe, ida),
+primary key (codPedido, idArticulo),
+unique (codPedido, idArticulo),
 foreign key (codPedido) references pedidos (codigo),
 foreign key (idArticulo) references articulos (id) 
 );

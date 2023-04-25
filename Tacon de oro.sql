@@ -17,7 +17,7 @@ drop table if exists tarjetabancaria;
 create table tarjetabancaria
 (numero varchar(50) not null unique,
 idSocio int,
-primary key (numero)
+primary key (numero),
 foreign key (idSocio) references socio (id));
 
 drop table if exists empresatransporte;
@@ -25,7 +25,7 @@ create table empresatransporte
 (nombre varchar(100) not null unique,
 CIF varchar(100),
 domicilioFiscal varchar(100),
-primary key (nombre),
+primary key (nombre)
 );
 
 drop table if exists ruta;

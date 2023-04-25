@@ -120,12 +120,19 @@ primary key (id)
 INSERT INTO `articulo`
 (nombre, tipoArticulo, precio, descripcion, material, stock, foto, numeroZapato, tipoZapato)
 VALUES
-('Z1', 'Zapato',  80, 'Modelo original de acabados impecables y la cantidad perfecta de reflectante', 'Sintetico', 20, 'Z1.png', 38, 'Zapatilla'),
-('Z2', 'Zapato',  90, 'Modelo que ofrece una estabilidad premium y una amortiguación cómoda', 'Ante', 15, 'Z2.png', 39, 'Zapato'),
-('Z3', 'Zapato',  100, 'Modelo creado para la cancha y adaptado al estilo urbano', 'Goma', 30, 'Z3.png', 36, 'Chancla')
--- ('Nike Air Force 1', 'Zapato',  80, 'Modelo original de baloncesto que introduce costuras duraderas, acabados impecables y la cantidad perfecta de reflectante', 'Sintetico', 20, 'NikeAirForce1.png', 38, 'Zapatilla'),
--- ('Nike Air Max Plus', 'Zapato',  90, 'Modelo Tuned Air que ofrece una estabilidad premium y una amortiguación cómoda', 'Sintetico', 15, 'NikeAirMaxPlus.png', 39, 'Zapatilla'),
--- ('Nike Dunk Low', 'Zapato',  100, 'Modelo creado para la cancha y adaptado al estilo urbano, con revestimientos de brillo perfecto y colores clásicos ', 'Sintetico', 30, 'NikeDunkLow.png', 36, 'Zapatilla')
+-- ('Z1', 'Zapato',  80, 'Modelo original de acabados impecables y la cantidad perfecta de reflectante', 'Sintetico', 20, 'Z1.png', 38, 'Zapatilla'),
+-- ('Z2', 'Zapato',  90, 'Modelo que ofrece una estabilidad premium y una amortiguación cómoda', 'Ante', 15, 'Z2.png', 39, 'Zapato'),
+-- ('Z3', 'Zapato',  100, 'Modelo creado para la cancha y adaptado al estilo urbano', 'Goma', 30, 'Z3.png', 36, 'Chancla')
+('Nike Air Force 1', 'Zapato',  80, 'Modelo original de acabados impecables y la cantidad perfecta de reflectante', 'Sintetico', 10, 'NikeAirForce1.png', 38, 'Zapatilla'),
+('Nike Air Force 1', 'Zapato',  80, 'Modelo original de acabados impecables y la cantidad perfecta de reflectante', 'Sintetico', 5, 'NikeAirForce1.png', 39, 'Zapatilla'),
+('Nike Air Force 1', 'Zapato',  80, 'Modelo original de acabados impecables y la cantidad perfecta de reflectante', 'Sintetico', 20, 'NikeAirForce1.png', 40, 'Zapatilla'),
+('Nike Air Force 1', 'Zapato',  80, 'Modelo original de acabados impecables y la cantidad perfecta de reflectante', 'Sintetico', 25, 'NikeAirForce1.png', 41, 'Zapatilla'),
+('Nike Air Max Plus', 'Zapato',  90, 'Modelo que ofrece una estabilidad premium y una amortiguación cómoda', 'Sintetico', 40, 'NikeAirMaxPlus.png', 39, 'Zapatilla'),
+('Nike Air Max Plus', 'Zapato',  90, 'Modelo que ofrece una estabilidad premium y una amortiguación cómoda', 'Sintetico', 50, 'NikeAirMaxPlus.png', 40, 'Zapatilla'),
+('Nike Air Max Plus', 'Zapato',  90, 'Modelo que ofrece una estabilidad premium y una amortiguación cómoda', 'Sintetico', 60, 'NikeAirMaxPlus.png', 41, 'Zapatilla'),
+('Nike Air Max Plus', 'Zapato',  90, 'Modelo que ofrece una estabilidad premium y una amortiguación cómoda', 'Sintetico', 70, 'NikeAirMaxPlus.png', 42, 'Zapatilla'),
+('Nike Air Max Plus', 'Zapato',  90, 'Modelo que ofrece una estabilidad premium y una amortiguación cómoda', 'Sintetico', 80, 'NikeAirMaxPlus.png', 43, 'Zapatilla'),
+('Nike Dunk Low', 'Zapato',  100, 'Modelo creado para la cancha y adaptado al estilo urbano', 'Sintetico', 30, 'NikeDunkLow.png', 36, 'Zapatilla')
 ;
 
 -- INSERTAR REGISTROS EN LA TABLA ARTICULO (BOLSOS)

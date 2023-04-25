@@ -22,13 +22,6 @@ idSocio int,
 primary key (numero)
 foreign key (idSocio) references socio (id));
 
-drop table if exists ruta;
-create table ruta
-(areas varchar (100) not null unique,
-diareparto varchar(50),
-primary key (areas)
-);
-
 drop table if exists pedidos;
 create table pedidos
 (codigo int not null unique,
@@ -37,6 +30,13 @@ total decimal,
 idsocio int,
 primary key (codigo),
 foreign key(idsocio) references socio (id));
+
+drop table if exists ruta;
+create table ruta
+(areas varchar (100) not null unique,
+diareparto varchar(50),
+primary key (areas)
+);
 
 drop table if exists empresatransporte;
 create table empresatransporte

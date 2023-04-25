@@ -132,16 +132,20 @@ VALUES
 ('Nike Air Max Plus', 'Zapato',  90, 'Modelo que ofrece una estabilidad premium y una amortiguación cómoda', 'Sintetico', 60, 'NikeAirMaxPlus.png', 41, 'Zapatilla'),
 ('Nike Air Max Plus', 'Zapato',  90, 'Modelo que ofrece una estabilidad premium y una amortiguación cómoda', 'Sintetico', 70, 'NikeAirMaxPlus.png', 42, 'Zapatilla'),
 ('Nike Air Max Plus', 'Zapato',  90, 'Modelo que ofrece una estabilidad premium y una amortiguación cómoda', 'Sintetico', 80, 'NikeAirMaxPlus.png', 43, 'Zapatilla'),
-('Nike Dunk Low', 'Zapato',  100, 'Modelo creado para la cancha y adaptado al estilo urbano', 'Sintetico', 30, 'NikeDunkLow.png', 36, 'Zapatilla')
+('Nike Dunk Low', 'Zapato',  100, 'Modelo creado para la cancha y adaptado al estilo urbano', 'Sintetico', 100, 'NikeDunkLow.png', 38, 'Zapatilla'),
+('Nike Dunk Low', 'Zapato',  100, 'Modelo creado para la cancha y adaptado al estilo urbano', 'Sintetico', 200, 'NikeDunkLow.png', 39, 'Zapatilla'),
+('Nike Dunk Low', 'Zapato',  100, 'Modelo creado para la cancha y adaptado al estilo urbano', 'Sintetico', 300, 'NikeDunkLow.png', 44, 'Zapatilla'),
+('Nike Dunk Low', 'Zapato',  100, 'Modelo creado para la cancha y adaptado al estilo urbano', 'Sintetico', 400, 'NikeDunkLow.png', 45, 'Zapatilla')
 ;
 
 -- INSERTAR REGISTROS EN LA TABLA ARTICULO (BOLSOS)
 INSERT INTO `articulo`
 (nombre, tipoArticulo, precio, descripcion, material, stock, foto, tipoBolso)
 VALUES
-('B1', 'Bolso',  50, 'Bandolera1', 'Sintetico', 20, 'B1.png', 'Bandolera'),
-('B2', 'Bolso',  60, 'Mochila1', 'Sintetico', 40, 'B2.png', 'Mochila'),
-('B3', 'Bolso',  70, 'Bolso de fiesta1', 'Sintetico', 10, 'B3.png', 'Fiesta')
+('Nike Heritage', 'Bolso', 25, 'Bandolera al estilo clásico Hip Pack con un diseño que puedes llevar cruzado sobre el pecho', 'poliéster', 40, 'NikeHeritage.png', 'Bandolera'),
+('Nike Sportswear', 'Bolso',  100, 'Mochila con parte posterior acolchada para ofrecer comodidad y sistema de correas versátil', 'Sintetico', 50, 'NikeSportswear.png', 'Mochila'),
+('Parfois Fiesta Dorado', 'Bolso',  30, 'Bolso de fiesta estilo clutch', 'Sintetico', 20, 'ParfoisFiestaDorado.png', 'Fiesta')
+;
 ;
 
 -- INSERTAR REGISTROS EN LA TABLA ARTICULO (COMPLEMENTOS)

@@ -2,6 +2,8 @@ Drop database if exists tacondeoro;
 create database tacondeoro;
 use tacondeoro;
 
+-- asfasdfdasf
+
 -- CREACION DE TABLAS
 
 drop table if exists socio;

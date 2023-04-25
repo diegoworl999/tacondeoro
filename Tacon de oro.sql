@@ -146,7 +146,6 @@ VALUES
 ('Nike Sportswear', 'Bolso',  100, 'Mochila con parte posterior acolchada para ofrecer comodidad y sistema de correas versátil', 'Sintetico', 50, 'NikeSportswear.png', 'Mochila'),
 ('Parfois Fiesta Dorado', 'Bolso',  30, 'Bolso de fiesta estilo clutch', 'Sintetico', 20, 'ParfoisFiestaDorado.png', 'Fiesta')
 ;
-;
 
 -- INSERTAR REGISTROS EN LA TABLA ARTICULO (COMPLEMENTOS)
 INSERT INTO `articulo`

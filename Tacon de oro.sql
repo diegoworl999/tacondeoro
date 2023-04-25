@@ -64,7 +64,7 @@ foto varchar (200),
 numeroZapato int,
 tipoZapato varchar(50),
 tipoBolso varchar(50),
-tipoComlemento varchar(50),
+tipoComplemento varchar(50),
 tallaComplemento int,
 primary key (id)
 );
@@ -96,7 +96,7 @@ VALUES
 
 -- Bolsos
 INSERT INTO `articulo`
-(nombre, tipoArticulo, precio, descripcion, material, stock, fotografia, tipoBolso)
+(nombre, tipoArticulo, precio, descripcion, material, stock, foto, tipoBolso)
 VALUES
 ('B1', 'Bolso',  50, 'Bandolera1', 'Sintetico', 20, 'B1.png', 'Bandolera'),
 ('B2', 'Bolso',  60, 'Mochila1', 'Sintetico', 40, 'B2.png', 'Mochila'),
@@ -105,7 +105,7 @@ VALUES
 
 -- Complementos
 INSERT INTO `articulo`
-(nombre, tipoArticulo, precio, descripcion, material, stock, fotografia, tipoComplemento, tallaComplemento)
+(nombre, tipoArticulo, precio, descripcion, material, stock, foto, tipoComplemento, tallaComplemento)
 VALUES
 ('C1', 'Complemento',  25, 'Cinturon1', 'Sintetico', 80, 'C1.png', 'Cinturón', 85),
 ('C2', 'Complemento',  25, 'Cinturon1', 'Sintetico', 80, 'C1.png', 'Cinturón', 90),

@@ -4,6 +4,7 @@
  */
 package edt5y6tacondeoro;
 import edt5tacondeoro1.Articulo;
+import edt5tacondeoro1.Zapato;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -13,6 +14,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 import javax.swing.table.DefaultTableModel;
 /**
  *
@@ -26,12 +28,15 @@ public class HacerPedido extends javax.swing.JDialog {
     public static final String USERNAME="root";
     public static final String PASSWORD="toor";
     DefaultTableModel dtm_articulo;
+    DefaultListModel dlm_carrito;
     /**
      * Creates new form HacerPedido
      */
     public HacerPedido(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        dlm_carrito=new DefaultListModel();
+        lst_carrito.setModel(dlm_carrito);
         dtm_articulo=new DefaultTableModel();
         dtm_articulo.addColumn("Nombre");
         dtm_articulo.addColumn("Tipo");
@@ -77,6 +82,11 @@ public class HacerPedido extends javax.swing.JDialog {
         jLabel1.setText("ARTICULOS:");
 
         btn_añadircarrito.setText("Añadir a carrito");
+        btn_añadircarrito.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_añadircarritoActionPerformed(evt);
+            }
+        });
 
         lst_carrito.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
@@ -115,6 +125,11 @@ public class HacerPedido extends javax.swing.JDialog {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        tbl_articulos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                mostarimg(evt);
+            }
+        });
         jScrollPane3.setViewportView(tbl_articulos);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -184,7 +199,7 @@ public class HacerPedido extends javax.swing.JDialog {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(tf_talla, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel5))
-                        .addGap(37, 37, 37)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btn_guardarpedido, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_añadircarrito))
@@ -218,7 +233,7 @@ public class HacerPedido extends javax.swing.JDialog {
         conexion=conectar();
         try{
             st=conexion.createStatement();
-            rs = st.executeQuery("SELECT nombre,tipoarticulo,precio from articulo");
+            rs = st.executeQuery("SELECT nombre,tipoarticulo,precio from articulo group by nombre");
             while (rs.next()){
                 Object [] fila=new Object[3];
                 fila[0]=rs.getObject(1);
@@ -237,6 +252,30 @@ public class HacerPedido extends javax.swing.JDialog {
             }
         }       
     }//GEN-LAST:event_btn_mostrarartiulosActionPerformed
+
+    private void mostarimg(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mostarimg
+        // TODO add your handling code here:
+//        String foto=null;
+//        int i=tbl_articulos.getSelectedRow();
+//        Articulo a=(Articulo)dtm_articulo.get(i);
+//        foto=a.getFotografia();
+//        ImageIcon img=new ImageIcon(foto);
+//        JLabel etiqueta=new JLabel();
+//        etiqueta.setIcon(img);
+    }//GEN-LAST:event_mostarimg
+
+    private void btn_añadircarritoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_añadircarritoActionPerformed
+        // TODO add your handling code here:
+        int i=tbl_articulos.getSelectedRow();
+        int x=tbl_articulos.getSelectedColumn();
+        String nombre=(String)dtm_articulo.getValueAt(i, x);
+        String tipo=(String)dtm_articulo.getValueAt(i, x+1);
+        int precio=(int)dtm_articulo.getValueAt(i, x+2);
+        int numero=Integer.parseInt(tf_talla.getText());
+        Zapato z=new Zapato(numero,tipo,nombre,precio);
+        dlm_carrito.addElement(z);
+        lst_carrito.setModel(dlm_carrito);
+    }//GEN-LAST:event_btn_añadircarritoActionPerformed
 
     //metodo para conectar el drive
     public static Connection conectar(){

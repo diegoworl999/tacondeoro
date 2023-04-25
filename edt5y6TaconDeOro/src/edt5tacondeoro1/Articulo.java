@@ -24,6 +24,11 @@ public class Articulo {
         this.stock = stock;
         this.fotografia = fotografia;
     }
+
+    public Articulo(String nombre, float precio) {
+        this.nombre = nombre;
+        this.precio = precio;
+    }
         
 
 	public String getNombre() {

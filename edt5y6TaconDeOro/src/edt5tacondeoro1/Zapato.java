@@ -18,6 +18,12 @@ public class Zapato extends Articulo {
         this.numero = numero;
         this.tipo = tipo;
     }
+
+    public Zapato(float numero, String tipo, String nombre, float precio) {
+        super(nombre, precio);
+        this.numero = numero;
+        this.tipo = tipo;
+    }
         
         
 

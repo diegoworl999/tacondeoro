@@ -144,14 +144,18 @@ VALUES
 ('B3', 'Bolso',  70, 'Bolso de fiesta1', 'Sintetico', 10, 'B3.png', 'Fiesta')
 ;
 
--- INSERTAR REGISTROS EN LA TABLA ARTICULO (COMPLEMENTOS)
+-- Complementos
 INSERT INTO `articulo`
 (nombre, tipoArticulo, precio, descripcion, material, stock, foto, tipoComplemento, tallaComplemento)
 VALUES
 ('C1', 'Complemento',  25, 'Cinturon1', 'Sintetico', 80, 'C1.png', 'Cinturón', 85),
-('C1', 'Complemento',  25, 'Cinturon1', 'Sintetico', 80, 'C1.png', 'Cinturón', 90),
+('C2', 'Complemento',  25, 'Cinturon1', 'Sintetico', 80, 'C1.png', 'Cinturón', 90),
 ('C3', 'Complemento',  15, 'Guantes1', 'Lana', 70, 'C2.png', 'Guantes', 6),
-('C4', 'Complemento',  10, 'Guantes2 manoplas', 'Lana', 60, 'C3.png', 'Guantes', 7)
+('C4', 'Complemento',  10, 'Guantes2 manoplas', 'Lana', 60, 'C3.png', 'Guantes', 7),
+('C5', 'Complemento',  25, 'Cinturon2', 'Sintetico', 80, 'C1.png', 'Cinturón', 85),
+('C6', 'Complemento',  27, 'Cinturon1', 'Sintetico', 80, 'C1.png', 'Cinturón', 90),
+('C7', 'Complemento',  15, 'Guantes1', 'Latex', 70, 'C2.png', 'Guantes', 6),
+('C8', 'Complemento',  10, 'Guantes2 manoplas', 'Lana', 60, 'C3.png', 'Guantes', 9)
 ;
 
 -- CREACION DE LA TABLA 'LINEASPEDIDO'

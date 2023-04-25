@@ -1,9 +1,11 @@
+-- CREACION DE LA BASE DE DATOS
 Drop database if exists tacondeoro;
 create database tacondeoro;
 use tacondeoro;
 
 -- CREACION DE TABLAS
 
+-- CREACION DE LA TABLA 'SOCIO'
 drop table if exists socio;
 create table socio
 (id int not null unique auto_increment,
@@ -11,15 +13,39 @@ nombre varchar(50),
 correoElectronico varchar(100),
 direccion varchar(50),
 poblacion varchar(100),
-primary key (id));
+primary key (id)
+);
 
+-- INSERTAR REGISTROS EN LA TABLA SOCIO
+INSERT INTO `socio`
+(nombre, correoElectronico, direccion, poblacion)
+VALUES
+('Juan', 'juan@asdas.com',  'Avda.A', 'Alcazar'),
+('Laura', 'laura@asdas.com',  'Avda.B', 'Herencia'),
+('Paula', 'paula@asdas.com',  'Avda.C', 'Tomelloso'),
+('Raul', 'raul@asdas.com',  'Avda.D', 'Villafranca')
+;
+
+-- CREACION DE LA TABLA 'TARJETABANCARIA'
 drop table if exists tarjetabancaria;
 create table tarjetabancaria
 (numero varchar(50) not null unique,
 idSocio int,
 primary key (numero),
-foreign key (idSocio) references socio (id));
+foreign key (idSocio) references socio (id)
+);
 
+-- INSERTAR REGISTROS EN LA TABLA TARJETABANCARIA
+INSERT INTO `tarjetabancaria`
+(numero, idSocio)
+VALUES
+('742572', 1),
+('763445', 1),
+('625145', 2),
+('4214125', 3)
+;
+
+-- CREACION DE LA TABLA 'EMPRESATRANSPORTE'
 drop table if exists empresatransporte;
 create table empresatransporte
 (nombre varchar(100) not null unique,
@@ -28,6 +54,16 @@ domicilioFiscal varchar(100),
 primary key (nombre)
 );
 
+-- INSERTAR REGISTROS EN LA TABLA EMPRESATRANSPORTE
+INSERT INTO `empresatransporte`
+(nombre, CIF, domicilioFiscal)
+VALUES
+('Empresa1', '13453245', 'Bahamas'),
+('Empresa2', '62354532', 'Irlanda'),
+('Empresa3', '12351123', 'Bahamas')
+;
+
+-- CREACION DE LA TABLA 'RUTA'
 drop table if exists ruta;
 create table ruta
 (id int not null unique auto_increment,
@@ -38,6 +74,16 @@ primary key (id),
 foreign key (empresaT) references empresatransporte (nombre)
 );
 
+-- INSERTAR REGISTROS EN LA TABLA RUTA
+INSERT INTO `ruta`
+(areas, diareparto, empresaT)
+VALUES
+('Area1', 'Lunes', 'Empresa1'),
+('Area2', 'Martes', 'Empresa2'),
+('Area3', 'Viernes', 'Empresa3')
+;
+
+-- CREACION DE LA TABLA 'PEDIDOS'
 drop table if exists pedidos;
 create table pedidos
 (codigo int not null unique auto_increment,
@@ -50,6 +96,7 @@ foreign key(idsocio) references socio (id),
 foreign key (idRuta) references ruta (id)
 );
 
+-- CREACION DE LA TABLA 'ARTICULO'
 drop table if exists articulo;
 create table articulo
 (id int not null unique auto_increment,
@@ -69,20 +116,7 @@ tallaComplemento int,
 primary key (id)
 );
 
-drop table if exists lineaspedido;
-create table lineaspedido
-(codPedido int not null,
-idArticulo int not null,
-cantidad int,
-primary key (codPedido, idArticulo),
-unique (codPedido, idArticulo),
-foreign key (codPedido) references pedidos (codigo),
-foreign key (idArticulo) references articulo (id) 
-);
-
--- INSERTAR REGISTROS
-
--- Zapatos
+-- INSERTAR REGISTROS EN LA TABLA ARTICULO (ZAPATOS)
 INSERT INTO `articulo`
 (nombre, tipoArticulo, precio, descripcion, material, stock, foto, numeroZapato, tipoZapato)
 VALUES
@@ -94,7 +128,7 @@ VALUES
 -- ('Nike Dunk Low', 'Zapato',  100, 'Modelo creado para la cancha y adaptado al estilo urbano, con revestimientos de brillo perfecto y colores clásicos ', 'Sintetico', 30, 'NikeDunkLow.png', 36, 'Zapatilla')
 ;
 
--- Bolsos
+-- INSERTAR REGISTROS EN LA TABLA ARTICULO (BOLSOS)
 INSERT INTO `articulo`
 (nombre, tipoArticulo, precio, descripcion, material, stock, foto, tipoBolso)
 VALUES
@@ -103,12 +137,24 @@ VALUES
 ('B3', 'Bolso',  70, 'Bolso de fiesta1', 'Sintetico', 10, 'B3.png', 'Fiesta')
 ;
 
--- Complementos
+-- INSERTAR REGISTROS EN LA TABLA ARTICULO (COMPLEMENTOS)
 INSERT INTO `articulo`
 (nombre, tipoArticulo, precio, descripcion, material, stock, foto, tipoComplemento, tallaComplemento)
 VALUES
 ('C1', 'Complemento',  25, 'Cinturon1', 'Sintetico', 80, 'C1.png', 'Cinturón', 85),
-('C2', 'Complemento',  25, 'Cinturon1', 'Sintetico', 80, 'C1.png', 'Cinturón', 90),
+('C1', 'Complemento',  25, 'Cinturon1', 'Sintetico', 80, 'C1.png', 'Cinturón', 90),
 ('C3', 'Complemento',  15, 'Guantes1', 'Lana', 70, 'C2.png', 'Guantes', 6),
 ('C4', 'Complemento',  10, 'Guantes2 manoplas', 'Lana', 60, 'C3.png', 'Guantes', 7)
 ;
+
+-- CREACION DE LA TABLA 'LINEASPEDIDO'
+drop table if exists lineaspedido;
+create table lineaspedido
+(codPedido int not null,
+idArticulo int not null,
+cantidad int,
+primary key (codPedido, idArticulo),
+unique (codPedido, idArticulo),
+foreign key (codPedido) references pedidos (codigo),
+foreign key (idArticulo) references articulo (id) 
+);

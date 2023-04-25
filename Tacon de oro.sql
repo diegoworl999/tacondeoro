@@ -59,3 +59,22 @@ unique (codpe, ida),
 foreign key (codpe) references pedidos (codigo),
 foreign key (ida) references articulos (id) 
 );
+-- TarjetasBancarias
+INSERT INTO `tarjetabancaria`
+(numero, idSocio)
+VALUES
+('155146824674', '1'),
+('513546519814', '2'),
+('541656518465', '3'),
+('651986598518', '4'),
+;
+
+-- Empresa
+INSERT INTO `tarjetabancaria`
+(numero, idSocio)
+VALUES
+('155146824674', '1'),
+('513546519814', '2'),
+('541656518465', '3'),
+('651986598518', '4'),
+;

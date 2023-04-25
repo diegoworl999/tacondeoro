@@ -26,16 +26,19 @@ drop table if exists pedidos;
 create table pedidos
 (codigo int not null unique,
 fecha varchar(50),
+areaped varchar (100),
 total decimal,
 idsocio int,
 primary key (codigo),
-foreign key(idsocio) references socio (id));
+foreign key(idsocio) references socio (id)
+);
 
 drop table if exists ruta;
 create table ruta
 (areas varchar (100) not null unique,
 diareparto varchar(50),
 primary key (areas)
+forign key (areas) references pedidos (areaped)
 );
 
 drop table if exists empresatransporte;

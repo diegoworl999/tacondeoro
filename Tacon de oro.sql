@@ -2,8 +2,6 @@ Drop database if exists tacondeoro;
 create database tacondeoro;
 use tacondeoro;
 
--- asfasdfdasf
-
 -- CREACION DE TABLAS
 
 drop table if exists socio;
@@ -19,7 +17,7 @@ drop table if exists tarjetabancaria;
 create table tarjetabancaria
 (numero varchar(50) not null unique,
 idSocio int,
-primary key (numero)
+primary key (numero),
 foreign key (idSocio) references socio (id));
 
 drop table if exists empresatransporte;
@@ -27,7 +25,7 @@ create table empresatransporte
 (nombre varchar(100) not null unique,
 CIF varchar(100),
 domicilioFiscal varchar(100),
-primary key (nombre),
+primary key (nombre)
 );
 
 drop table if exists ruta;
@@ -54,7 +52,7 @@ foreign key (idRuta) references ruta (id)
 
 drop table if exists articulo;
 create table articulo
-(id int not null unique,
+(id int not null unique auto_increment,
 nombre varchar (50),
 tipoArticulo varchar (50),
 precio decimal,
@@ -66,7 +64,7 @@ foto varchar (200),
 numeroZapato int,
 tipoZapato varchar(50),
 tipoBolso varchar(50),
-tipoComlemento varchar(50),
+tipoComplemento varchar(50),
 tallaComplemento int,
 primary key (id)
 );
@@ -79,7 +77,7 @@ cantidad int,
 primary key (codPedido, idArticulo),
 unique (codPedido, idArticulo),
 foreign key (codPedido) references pedidos (codigo),
-foreign key (idArticulo) references articulos (id) 
+foreign key (idArticulo) references articulo (id) 
 );
 
 -- INSERTAR REGISTROS
@@ -98,7 +96,7 @@ VALUES
 
 -- Bolsos
 INSERT INTO `articulo`
-(nombre, tipoArticulo, precio, descripcion, material, stock, fotografia, tipoBolso)
+(nombre, tipoArticulo, precio, descripcion, material, stock, foto, tipoBolso)
 VALUES
 ('B1', 'Bolso',  50, 'Bandolera1', 'Sintetico', 20, 'B1.png', 'Bandolera'),
 ('B2', 'Bolso',  60, 'Mochila1', 'Sintetico', 40, 'B2.png', 'Mochila'),
@@ -107,7 +105,7 @@ VALUES
 
 -- Complementos
 INSERT INTO `articulo`
-(nombre, tipoArticulo, precio, descripcion, material, stock, fotografia, tipoComplemento, tallaComplemento)
+(nombre, tipoArticulo, precio, descripcion, material, stock, foto, tipoComplemento, tallaComplemento)
 VALUES
 ('C1', 'Complemento',  25, 'Cinturon1', 'Sintetico', 80, 'C1.png', 'Cinturón', 85),
 ('C2', 'Complemento',  25, 'Cinturon1', 'Sintetico', 80, 'C1.png', 'Cinturón', 90),

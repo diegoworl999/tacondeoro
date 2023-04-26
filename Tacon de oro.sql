@@ -102,7 +102,7 @@ create table articulo
 (id int not null unique auto_increment,
 nombre varchar (50),
 tipoArticulo varchar (50),
-precio decimal,
+precio int,
 color varchar(50),
 descripcion varchar (500),
 material varchar (50), 

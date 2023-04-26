@@ -89,7 +89,7 @@ create table pedidos
 (codigo int not null unique auto_increment,
 fecha varchar(50),
 idRuta int,
-total decimal,
+total int,
 idsocio int,
 primary key (codigo),
 foreign key(idsocio) references socio (id),

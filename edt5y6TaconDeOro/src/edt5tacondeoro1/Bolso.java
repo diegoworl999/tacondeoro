@@ -15,6 +15,14 @@ public class Bolso extends Articulo {
         super(nombre, precio, descripcion, material, stock, fotografia);
         this.tipo = tipo;
     }
+
+    public Bolso(String tipo, String nombre, float precio) {
+        super(nombre, precio);
+        this.tipo = tipo;
+    }
+    
+    
+    
         
         
 
@@ -29,6 +37,11 @@ public class Bolso extends Articulo {
 	public void setTipo(String tipo) {
 		this.tipo = tipo;
 	}
+
+    @Override
+    public String toString() {
+        return tipo+" ,"+super.getNombre()+" , precio: "+super.getPrecio() +"€";
+    }
 
 	
         

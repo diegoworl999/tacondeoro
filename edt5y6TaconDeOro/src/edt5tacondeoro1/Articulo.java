@@ -103,5 +103,6 @@ public class Articulo {
 	public void setFotografia(String fotografia) {
 		this.fotografia = fotografia;
 	}
+        
 
 }

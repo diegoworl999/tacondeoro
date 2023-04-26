@@ -5,21 +5,21 @@ package edt5tacondeoro1;
  */
 public class Zapato extends Articulo {
 
-	private float numero;
+	private int numero;
 	private String tipo;
 
-    public Zapato(float numero, String tipo) {
+    public Zapato(int numero, String tipo) {
         this.numero = numero;
         this.tipo = tipo;
     }
 
-    public Zapato(float numero, String tipo, String nombre, float precio, String descripcion, String material, int stock, String fotografia) {
+    public Zapato(int numero, String tipo, String nombre, float precio, String descripcion, String material, int stock, String fotografia) {
         super(nombre, precio, descripcion, material, stock, fotografia);
         this.numero = numero;
         this.tipo = tipo;
     }
 
-    public Zapato(float numero, String tipo, String nombre, float precio) {
+    public Zapato(int numero, String tipo, String nombre, float precio) {
         super(nombre, precio);
         this.numero = numero;
         this.tipo = tipo;
@@ -35,7 +35,7 @@ public class Zapato extends Articulo {
 	 * 
 	 * @param numero
 	 */
-	public void setNumero(float numero) {
+	public void setNumero(int numero) {
 		this.numero = numero;
 	}
 
@@ -55,5 +55,12 @@ public class Zapato extends Articulo {
 		// TODO - implement Zapato.Zapato
 		throw new UnsupportedOperationException();
 	}
+
+    @Override
+    public String toString() {
+        return  super.getNombre()+" ,talla: "+ numero +" , precio: "+super.getPrecio() +"€";
+    }
+        
+        
 
 }

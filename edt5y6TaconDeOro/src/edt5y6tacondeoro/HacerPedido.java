@@ -3,19 +3,27 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JDialog.java to edit this template
  */
 package edt5y6tacondeoro;
+
 import edt5tacondeoro1.Articulo;
+import edt5tacondeoro1.Bolso;
+import edt5tacondeoro1.Complemento;
 import edt5tacondeoro1.Zapato;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
 import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.JComboBox;
+import javax.swing.JOptionPane;
 /**
  *
  * @author usumaniana
@@ -35,10 +43,19 @@ public class HacerPedido extends javax.swing.JDialog {
     public HacerPedido(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+//        cmb_tallaz.removeAllItems();
+//        cmb_tallaz.addItem("36");
+//        cmb_tallaz.addItem("38");
+//        cmb_tallaz.addItem("36");
+//        cmb_tallaz.addItem("39");
+//        cmb_tallaz.addItem("40");
+//        cmb_tallaz.addItem("41");
+//        cmb_tallaz.addItem("42");
         dlm_carrito=new DefaultListModel();
         lst_carrito.setModel(dlm_carrito);
         dtm_articulo=new DefaultTableModel();
         dtm_articulo.addColumn("Nombre");
+        dtm_articulo.addColumn("Descripcion");
         dtm_articulo.addColumn("Tipo");
         dtm_articulo.addColumn("Precio");
         //asignamos el modelo a la vista tabla
@@ -73,9 +90,9 @@ public class HacerPedido extends javax.swing.JDialog {
         btn_actualizarcarrito = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         spn_cantidad = new javax.swing.JSpinner();
-        tf_talla = new javax.swing.JTextField();
         jScrollPane3 = new javax.swing.JScrollPane();
         tbl_articulos = new javax.swing.JTable();
+        tf_talla = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -98,6 +115,11 @@ public class HacerPedido extends javax.swing.JDialog {
         jLabel2.setText("CARRITO:");
 
         btn_guardarpedido.setText("Guardar pedido");
+        btn_guardarpedido.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_guardarpedidoActionPerformed(evt);
+            }
+        });
 
         jLabel3.setText("Cantidad:");
 
@@ -159,9 +181,9 @@ public class HacerPedido extends javax.swing.JDialog {
                             .addComponent(jLabel3)
                             .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(tf_talla, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(spn_cantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(spn_cantidad, javax.swing.GroupLayout.DEFAULT_SIZE, 105, Short.MAX_VALUE)
+                            .addComponent(tf_talla)))
                     .addComponent(etiqueta, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(47, 47, 47)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -197,8 +219,8 @@ public class HacerPedido extends javax.swing.JDialog {
                             .addComponent(spn_cantidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(tf_talla, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel5))
+                            .addComponent(jLabel5)
+                            .addComponent(tf_talla, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btn_guardarpedido, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -233,12 +255,13 @@ public class HacerPedido extends javax.swing.JDialog {
         conexion=conectar();
         try{
             st=conexion.createStatement();
-            rs = st.executeQuery("SELECT nombre,tipoarticulo,precio from articulo group by nombre");
+            rs = st.executeQuery("SELECT nombre,descripcion,tipoarticulo,precio from articulo group by nombre");
             while (rs.next()){
-                Object [] fila=new Object[3];
+                Object [] fila=new Object[4];
                 fila[0]=rs.getObject(1);
                 fila[1]=rs.getObject(2);
                 fila[2]=rs.getObject(3);
+                fila[3]=rs.getObject(4);
                dtm_articulo.addRow(fila);
             }
         } catch (SQLException ex) {
@@ -267,15 +290,52 @@ public class HacerPedido extends javax.swing.JDialog {
     private void btn_añadircarritoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_añadircarritoActionPerformed
         // TODO add your handling code here:
         int i=tbl_articulos.getSelectedRow();
-        int x=tbl_articulos.getSelectedColumn();
-        String nombre=(String)dtm_articulo.getValueAt(i, x);
-        String tipo=(String)dtm_articulo.getValueAt(i, x+1);
-        int precio=(int)dtm_articulo.getValueAt(i, x+2);
-        int numero=Integer.parseInt(tf_talla.getText());
-        Zapato z=new Zapato(numero,tipo,nombre,precio);
-        dlm_carrito.addElement(z);
+        
+        String nombre=(String)dtm_articulo.getValueAt(i, 0);
+        String tipo=(String)dtm_articulo.getValueAt(i, 2);
+        int precio=(int)dtm_articulo.getValueAt(i, 3);
+        
+        if(tipo.equalsIgnoreCase("zapato")){
+            int numero=Integer.parseInt(tf_talla.getText());
+            Zapato z=new Zapato(numero,tipo,nombre,precio);
+            dlm_carrito.addElement(z);
+        }else{
+            if(tipo.equalsIgnoreCase("bolso")){
+                String tipo2=(String)dtm_articulo.getValueAt(i, 1);
+                Bolso b=new Bolso(tipo2,nombre,precio);
+                dlm_carrito.addElement(b);
+            }else{
+                int numero=Integer.parseInt(tf_talla.getText());
+                String tipo3=(String)dtm_articulo.getValueAt(i, 1);
+                Complemento c=new Complemento(numero,tipo3,nombre,precio);
+                dlm_carrito.addElement(c);
+            }
+        }
+        
         lst_carrito.setModel(dlm_carrito);
     }//GEN-LAST:event_btn_añadircarritoActionPerformed
+
+    private void btn_guardarpedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_guardarpedidoActionPerformed
+        // TODO add your handling code here:
+        Connection c=conectar();
+        PreparedStatement ps=null;
+        int res=0;
+        
+        try{
+            ps=c.prepareStatement("INSERT INTO pedido (total) VALUES (?)");
+//            ps.setString(1, tf_nombre.getText());
+//            ps.setString(2, tf_direcc.getText());
+//            ps.setString(3, tf_telf.getText());
+            res=ps.executeUpdate();
+            if(res>0){
+                JOptionPane.showMessageDialog(null, "Pedido añadida correctamente");
+            }else{
+                JOptionPane.showMessageDialog(null, "ERROR.No se añadio el pedido");
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(HacerPedido.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btn_guardarpedidoActionPerformed
 
     //metodo para conectar el drive
     public static Connection conectar(){

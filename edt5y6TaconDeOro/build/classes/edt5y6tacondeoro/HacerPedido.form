@@ -69,9 +69,9 @@
                               <Component id="jLabel5" min="-2" pref="55" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="tf_talla" min="-2" pref="105" max="-2" attributes="0"/>
-                              <Component id="spn_cantidad" min="-2" pref="105" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="spn_cantidad" pref="105" max="32767" attributes="0"/>
+                              <Component id="tf_talla" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                       <Component id="etiqueta" alignment="1" min="-2" pref="191" max="-2" attributes="0"/>
@@ -119,8 +119,8 @@
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="tf_talla" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="tf_talla" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="32767" attributes="0"/>
                       </Group>
@@ -187,6 +187,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Guardar pedido"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_guardarpedidoActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel3">
           <Properties>
@@ -217,8 +220,6 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JSpinner" name="spn_cantidad">
-        </Component>
-        <Component class="javax.swing.JTextField" name="tf_talla">
         </Component>
         <Container class="javax.swing.JScrollPane" name="jScrollPane3">
           <AuxValues>
@@ -271,6 +272,8 @@
             </Component>
           </SubComponents>
         </Container>
+        <Component class="javax.swing.JTextField" name="tf_talla">
+        </Component>
       </SubComponents>
     </Container>
   </SubComponents>

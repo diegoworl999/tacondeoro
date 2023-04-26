@@ -22,6 +22,13 @@ public class Complemento extends Articulo {
         this.tipo= tipo;
         this.talla = talla;
     }
+
+    public Complemento(int talla, String tipo, String nombre, float precio) {
+        super(nombre, precio);
+        this.talla = talla;
+        this.tipo = tipo;
+    }
+    
         
 
 	public int getTalla() {
@@ -36,5 +43,10 @@ public class Complemento extends Articulo {
 		this.talla = talla;
 	}
 
-
+    @Override
+    public String toString() {
+        return tipo+" ,"+super.getNombre()+" , precio: "+super.getPrecio() +"€";
+    }
+        
+        
 }
